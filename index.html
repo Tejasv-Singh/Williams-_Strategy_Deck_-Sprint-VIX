@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Williams Strategy Deck</title>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "@forge/bridge": "https://esm.sh/@forge/bridge@3.0.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@forge/api": "https://esm.sh/@forge/api@^6.4.2",
+    "@forge/resolver": "https://esm.sh/@forge/resolver@^1.7.1"
+  }
+}
+</script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@400;700&family=Roboto:wght@300;400;700&display=swap">
+    <style>
+        :root {
+            --williams-blue: #00A0E2;
+            --dark-bg: #040D19;
+            --panel-bg: #0B1C33;
+            --text-main: #FFFFFF;
+            --text-dim: #8FA4B8;
+            --danger: #FF3333;
+            --warning: #FFCC00;
+            --success: #00CC44;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 24px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        h1, h2, h3 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; margin: 0; }
+        .mono { font-family: 'Roboto Mono', monospace; }
+        
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--williams-blue);
+            padding-bottom: 16px;
+            margin-bottom: 32px;
+        }
+        .brand { color: var(--williams-blue); font-weight: 900; font-size: 24px; letter-spacing: 2px; }
+
+        /* Grid */
+        .telemetry-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid #1C3A5E;
+            padding: 24px;
+            border-radius: 4px;
+        }
+
+        .panel-title {
+            color: var(--text-dim);
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        /* VIX Gauge */
+        .vix-display {
+            text-align: center;
+            position: relative;
+        }
+        .vix-score {
+            font-size: 96px;
+            font-weight: 900;
+            line-height: 1;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .vix-label {
+            font-size: 24px;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        /* Stats */
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 8px;
+        }
+        .stat-label { color: var(--text-dim); }
+        .stat-value { font-weight: bold; }
+
+        /* Key Drivers */
+        .driver-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255,51,51,0.1);
+            border-left: 3px solid var(--danger);
+            padding: 12px;
+            margin-bottom: 8px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+        }
+
+        /* F1 Insight */
+        .insight-box {
+            background: rgba(0, 160, 226, 0.1);
+            border: 1px solid var(--williams-blue);
+            padding: 20px;
+            margin-top: 24px;
+            border-radius: 4px;
+        }
+        .insight-text {
+            font-size: 18px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .loading { text-align: center; color: var(--williams-blue); padding-top: 50px; }
+        .error { color: var(--danger); text-align: center; padding-top: 50px; }
+
+        /* Utilities */
+        .text-green { color: var(--success); }
+        .text-yellow { color: var(--warning); }
+        .text-red { color: var(--danger); }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+modules:
+  rovo:agent:
+    - key: williams-strategy-agent
+      name: Williams Strategy Strategist
+      description: >-
+        Analyzes Jira Sprints using F1-style telemetry and Monte Carlo
+        simulations to predict Sprint volatility (VIX) and crash risk.
+      prompt: >-
+        You are the Head of Strategy for the Williams Racing team, but for Agile software development. 
+        Your job is to analyze sprint risk. 
+        When asked about sprint health, always check the sprint volatility first.
+        Use F1 metaphors (tire degradation, safety cars, pit windows, telemetry).
+        Be direct, data-driven, and strategic.
+      actions:
+        - key: analyze-sprint-risk
+          name: analyzeSprintRisk
+          description: >-
+            Calculates the volatility score (VIX) and crash probability for the current active sprint 
+            based on issue churn and remaining time.
+          function: rovo-risk-fn
+
+  jira:globalPage:
+    - key: williams-strategy-dashboard
+      resource: main
+      resolver:
+        function: risk-engine-fn
+      title: Williams Strategy Deck
+
+  function:
+    - key: risk-engine-fn
+      handler: index.handler
+    - key: rovo-risk-fn
+      handler: index.rovoHandler
+
+resources:
+  - key: main
+    path: .
+
+app:
+  id: ari:cloud:ecosystem::app/williams-strategy-deck-vix
+  name: Williams Strategy Deck
+
+permissions:
+  scopes:
+    - read:jira-work
+    - read:jira-user
+    - read:sprint:jira-software
